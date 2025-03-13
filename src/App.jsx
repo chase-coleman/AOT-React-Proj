@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/navBar";
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+  const [titanData, setTitanData] = useState([]);
+  const [organizations, setOrganizations] = useState([]);
+
+  useEffect(() => {
+    console.log(characters);
+    console.log(titanData);
+    console.log(organizations);
+  }, [characters, titanData, organizations]);
+
   return (
     <>
       <div
@@ -12,7 +22,16 @@ function App() {
       flex flex-col items-center"
       >
         <NavBar />
-        <Outlet />
+        <Outlet
+          context={{
+            characters,
+            setCharacters,
+            titanData,
+            setTitanData,
+            organizations,
+            setOrganizations,
+          }}
+        />
       </div>
     </>
   );

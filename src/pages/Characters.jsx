@@ -1,17 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import getCharacters from "../utilities/getCharacters";
 
 //  use pagination to get calls for multiple pages
-const getCharacters = async () => {
-  let { data } = await axios.get(
-    "https://api.attackontitanapi.com/characters?page=1"
-  );
-  let results = data.results;
-  return results;
-};
 
 const Characters = () => {
-  const [characters, setCharacters] = useState([]);
+  const { characters, setCharacters } = useOutletContext();
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -20,7 +15,7 @@ const Characters = () => {
     };
     fetchCharacters();
   }, []);
-  console.log(characters);
+  // console.log(characters);
 
   return (
     <>

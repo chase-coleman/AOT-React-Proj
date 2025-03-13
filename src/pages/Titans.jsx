@@ -1,13 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-const getTitans = async () => {
-  let { data } = await axios.get("https://api.attackontitanapi.com/titans");
-  let titans = data.results;
-  return titans;
-};
+import { useOutletContext } from "react-router-dom";
+import getTitans from "../utilities/getTitans";
 
 const Titans = () => {
-  const [titanData, setTitanData] = useState([]);
+  const { titanData, setTitanData } = useOutletContext();
 
   useEffect(() => {
     const fetchTitans = async () => {
@@ -16,7 +13,7 @@ const Titans = () => {
     };
     fetchTitans();
   }, []);
-  console.log(titanData);
+  // console.log(titanData);
   return (
     <>
       <h1>Titans</h1>
