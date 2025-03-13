@@ -6,19 +6,21 @@ const getCharacters = async () => {
   let { data } = await axios.get(
     "https://api.attackontitanapi.com/characters?page=1"
   );
-  let characters = data.results;
-  return characters;
+  let results = data.results;
+  return results;
 };
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
-  
-  useEffect(async () => {
-    console.log("Rendering");
-    const chars = await getCharacters();
-    console.log(chars);
-    setCharacters(chars)
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      const chars = await getCharacters();
+      setCharacters(chars);
+    };
+    fetchCharacters();
   }, []);
+  console.log(characters);
 
   return (
     <>
