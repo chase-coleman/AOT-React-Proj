@@ -4,6 +4,8 @@ import "./App.css";
 import NavBar from "./components/navBar";
 
 function App() {
+  const [background, setBackground] = useState()
+  
   const [characters, setCharacters] = useState([]);
   const [page, setPage] = useState(1)
   const [titanData, setTitanData] = useState([]);
