@@ -5,6 +5,7 @@ import NavBar from "./components/navBar";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [page, setPage] = useState(1)
   const [titanData, setTitanData] = useState([]);
   const [organizations, setOrganizations] = useState([]);
 
@@ -12,7 +13,8 @@ function App() {
     console.log(characters);
     console.log(titanData);
     console.log(organizations);
-  }, [characters, titanData, organizations]);
+    console.log(page)
+  }, [characters, titanData, organizations, page]);
 
   return (
     <>
